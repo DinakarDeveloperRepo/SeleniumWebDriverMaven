@@ -4,14 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class LoginTest {
 	
 	public static WebDriver driver;
 	
-	@BeforeSuite
+	@BeforeTest
 	public void setUp() {
 		
 		System.setProperty("webdriver.gecko.driver","C:\\Users\\dinak\\OneDrive\\Desktop\\Executables\\geckodriver.exe");
@@ -29,7 +31,13 @@ public class LoginTest {
 		
 	}
 	
-	@AfterSuite
+	@Test(priority=1)
+	
+	public void browse() {
+		driver.get("https://www.google.com");
+	}
+	
+	@AfterTest
 	public void tearDown() {
 		
 		driver.quit();
